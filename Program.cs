@@ -78,220 +78,52 @@ C# - полностью ООП. Всё в С# - это объекты. Даже 
 перечислениями.
 По стеку есть ограничения - он небольшего размера, к куче доступ менее быстрый, 
 но объем у кучи гораздо больше, чем у стека
-
-
-
-
-
-
  */
 namespace SPU221_NET
 {
-    //struct Car
-    //{
-    //    public string Name; //referance type (null)
-    //    public int Year; //value type 0
-    //    public bool isMove; // value type false
-
-    //    public string getName()
-    //    {
-    //        return Name;
-    //    }
-
-    //    public int getYear()
-    //    {
-    //        return Year;
-    //    }
-
-    //    public bool getIsMove()
-    //    {
-    //        return isMove;
-    //    }
-
-    //    public Car(string name)
-    //    {
-    //        Console.WriteLine(name);
-    //        Year = 2000;
-    //        Name = name;
-    //        isMove = false;
-    //    }
-    //    public Car(string name, int year)
-    //    {
-    //        Console.WriteLine(name);
-    //        Name = name;
-    //        Year = year;
-    //        isMove = true;
-    //    }
-
-    //}
-    ////class Human
-    ////{
-    ////    public void show() { }
-    ////}
-    ////class Student:Human
-    ////{
-    ////    public Student():base(){}
-
-    ////    public void show2()
-    ////    {
-    ////        base.show();
-    ////    }
-    ////}
-    //class Point
-    //{
-    //    private static int countObject;
-
-    //    public int Y { get; set; }
-    //    public int X { get; set; } //Делегируем создание скрытых полей компилятору
-    //    /*При созданий свойства:
-    //    1) Создаётся скрытое поле
-    //    2) Создаётся геттер, которые возвращает значение этого поля
-    //    3) Создаётся сеттер, который устанавливает значение для скрытого поля
-    //    */
-
-    //    //Свойства p.Y = 20
-    //    //public int Y
-    //    //{
-    //    //    get { return y; }
-    //    //    set
-    //    //    {
-    //    //        if (value > 0)
-    //    //            y = value;
-    //    //    }
-    //    //}
-
-    //    public Point()
-    //    {
-    //        countObject++;
-    //    }
-    //    public Point(int x, int y)
-    //    {
-    //        countObject++;
-    //        X = x;
-    //        Y = y;
-    //    }
-
-    //    static Point()
-    //    {
-    //        Point.countObject = 0;
-    //    }
-
-
-
-    //    //public void ShowPoint()
-    //    //{
-    //    //    Console.WriteLine($"X: {X}, Y: {this.y}");
-    //    //}
-
-    //    public override string ToString()
-    //    {
-    //        return $"X: {X}, Y: {Y}";
-    //    }
-
-    //    public static void GetCountObject()
-    //    {
-    //        Console.WriteLine(countObject);
-    //    }
-
-    //    public static Point operator +(Point obj, int a)
-    //    {
-    //        return new Point(obj.X + a, obj.Y + a);
-    //    }
-
-    //    public static Point operator +(int a, Point obj)
-    //    {
-    //        return new Point(obj.X + a, obj.Y + a);
-    //    }
-    //    //перегрузка инкремента
-    //    public static Point operator ++(Point s)
-    //    {
-    //        s.X++;
-    //        s.Y++;
-    //        return s;
-    //    }
-    //    public static Point operator -(Point s)
-    //    {
-    //        return new Point { X = -s.X, Y = -s.Y };
-    //    }
-    //    //перегрузка декремента
-    //    public static Point operator --(Point s)
-    //    {
-    //        s.X--;
-    //        s.Y--;
-    //        return s;
-    //    }
-    //    public static bool operator <=(Point p, int a)
-    //    {
-    //        if (p.X <= a && p.Y <= a)
-    //            return true;
-    //        return false;
-    //    }
-    //    public static bool operator >=(Point p, int a)
-    //    {
-    //        if (p.X >= a && p.Y >= a)
-    //            return true;
-    //        return false;
-    //    }
-
-    //    public static bool operator true(Point p)
-    //    {
-    //        if (p.X != 0 && p.Y != 0)
-    //            return true;
-    //        return false;
-    //    }
-    //    public static bool operator false(Point p)
-    //    {
-    //        return false;
-    //    }
-
-    //}
-    //abstract class Transport
-    //{
-    //    //Класс называется абстрактным, если у него есть хотя бы 1 абстрактный метод
-    //    //Абстрактные методы должны быть обязательно реализованы в классах-наследниках
-    //    abstract public void Drive();
-    //    abstract public void Stop();
-    //}
-
-    //class Bus : Transport
-    //{
-    //    public override string ToString()
-    //    {
-    //        return base.ToString();
-    //    }
-    //    public override void Drive()
-    //    {
-    //        Console.WriteLine("i am moving....Bus");
-    //    }
-
-    //    public override void Stop()
-    //    {
-    //        Console.WriteLine("Stoped");
-    //    }
-    //}
+ 
     internal class Program
     { 
         
+        public static void gameBird(IFly bird)
+        {
+            bird.fly();
+        }
+
         static void Main(string[] args)
         {
-            int r, c;
-            Console.WriteLine("Enter rows: ");
-            r = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter cols: ");
-            c = Convert.ToInt32(Console.ReadLine());
-            MyArray2D arr = new MyArray2D(r,c);
+
+            IFly obj;
+            obj = new Duck();
+            gameBird(obj);
+            obj = new Goose();
+            gameBird(obj);
 
 
-            Random rnd = new Random();
-            for (int i = 0; i < arr.Rows; i++)
-            {
-                for (int j = 0; j < arr.Cols; j++)
-                {
-                    arr[i, j] = rnd.Next(10, 99);
-                    Console.Write(arr[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            //Point p1 = new Point(3, 4);
+            //Point p2 = new Point(3, 4);
+
+
+            //Console.WriteLine(p1.Equals(p2)); 
+
+            //int r, c;
+            //Console.WriteLine("Enter rows: ");
+            //r = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Enter cols: ");
+            //c = Convert.ToInt32(Console.ReadLine());
+            //MyArray2D arr = new MyArray2D(r,c);
+
+
+            //Random rnd = new Random();
+            //for (int i = 0; i < arr.Rows; i++)
+            //{
+            //    for (int j = 0; j < arr.Cols; j++)
+            //    {
+            //        arr[i, j] = rnd.Next(10, 99);
+            //        Console.Write(arr[i, j] + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
 
 
             //MyArray arr = new MyArray(10);
