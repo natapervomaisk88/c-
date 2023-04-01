@@ -87,157 +87,246 @@ C# - полностью ООП. Всё в С# - это объекты. Даже 
  */
 namespace SPU221_NET
 {
-    struct Car
-    {
-        public string Name; //referance type (null)
-        public int Year; //value type 0
-        public bool isMove; // value type false
-
-        public string getName()
-        {
-            return Name;
-        }
-
-        public int getYear()
-        {
-            return Year;
-        }
-
-        public bool getIsMove()
-        {
-            return isMove;
-        }
-
-        public Car(string name)
-        {
-            Console.WriteLine(name);
-            Year = 2000;
-            Name = name;
-            isMove = false;
-        }
-        public Car(string name, int year)
-        {
-            Console.WriteLine(name);
-            Name = name;
-            Year = year;
-            isMove = true;
-        }
-
-    }
-    //class Human
+    //struct Car
     //{
-    //    public void show() { }
-    //}
-    //class Student:Human
-    //{
-    //    public Student():base(){}
+    //    public string Name; //referance type (null)
+    //    public int Year; //value type 0
+    //    public bool isMove; // value type false
 
-    //    public void show2()
+    //    public string getName()
     //    {
-    //        base.show();
+    //        return Name;
+    //    }
+
+    //    public int getYear()
+    //    {
+    //        return Year;
+    //    }
+
+    //    public bool getIsMove()
+    //    {
+    //        return isMove;
+    //    }
+
+    //    public Car(string name)
+    //    {
+    //        Console.WriteLine(name);
+    //        Year = 2000;
+    //        Name = name;
+    //        isMove = false;
+    //    }
+    //    public Car(string name, int year)
+    //    {
+    //        Console.WriteLine(name);
+    //        Name = name;
+    //        Year = year;
+    //        isMove = true;
+    //    }
+
+    //}
+    ////class Human
+    ////{
+    ////    public void show() { }
+    ////}
+    ////class Student:Human
+    ////{
+    ////    public Student():base(){}
+
+    ////    public void show2()
+    ////    {
+    ////        base.show();
+    ////    }
+    ////}
+    //class Point
+    //{
+    //    private static int countObject;
+
+    //    public int Y { get; set; }
+    //    public int X { get; set; } //Делегируем создание скрытых полей компилятору
+    //    /*При созданий свойства:
+    //    1) Создаётся скрытое поле
+    //    2) Создаётся геттер, которые возвращает значение этого поля
+    //    3) Создаётся сеттер, который устанавливает значение для скрытого поля
+    //    */
+
+    //    //Свойства p.Y = 20
+    //    //public int Y
+    //    //{
+    //    //    get { return y; }
+    //    //    set
+    //    //    {
+    //    //        if (value > 0)
+    //    //            y = value;
+    //    //    }
+    //    //}
+
+    //    public Point()
+    //    {
+    //        countObject++;
+    //    }
+    //    public Point(int x, int y)
+    //    {
+    //        countObject++;
+    //        X = x;
+    //        Y = y;
+    //    }
+
+    //    static Point()
+    //    {
+    //        Point.countObject = 0;
+    //    }
+
+
+
+    //    //public void ShowPoint()
+    //    //{
+    //    //    Console.WriteLine($"X: {X}, Y: {this.y}");
+    //    //}
+
+    //    public override string ToString()
+    //    {
+    //        return $"X: {X}, Y: {Y}";
+    //    }
+
+    //    public static void GetCountObject()
+    //    {
+    //        Console.WriteLine(countObject);
+    //    }
+
+    //    public static Point operator +(Point obj, int a)
+    //    {
+    //        return new Point(obj.X + a, obj.Y + a);
+    //    }
+
+    //    public static Point operator +(int a, Point obj)
+    //    {
+    //        return new Point(obj.X + a, obj.Y + a);
+    //    }
+    //    //перегрузка инкремента
+    //    public static Point operator ++(Point s)
+    //    {
+    //        s.X++;
+    //        s.Y++;
+    //        return s;
+    //    }
+    //    public static Point operator -(Point s)
+    //    {
+    //        return new Point { X = -s.X, Y = -s.Y };
+    //    }
+    //    //перегрузка декремента
+    //    public static Point operator --(Point s)
+    //    {
+    //        s.X--;
+    //        s.Y--;
+    //        return s;
+    //    }
+    //    public static bool operator <=(Point p, int a)
+    //    {
+    //        if (p.X <= a && p.Y <= a)
+    //            return true;
+    //        return false;
+    //    }
+    //    public static bool operator >=(Point p, int a)
+    //    {
+    //        if (p.X >= a && p.Y >= a)
+    //            return true;
+    //        return false;
+    //    }
+
+    //    public static bool operator true(Point p)
+    //    {
+    //        if (p.X != 0 && p.Y != 0)
+    //            return true;
+    //        return false;
+    //    }
+    //    public static bool operator false(Point p)
+    //    {
+    //        return false;
+    //    }
+
+    //}
+    //abstract class Transport
+    //{
+    //    //Класс называется абстрактным, если у него есть хотя бы 1 абстрактный метод
+    //    //Абстрактные методы должны быть обязательно реализованы в классах-наследниках
+    //    abstract public void Drive();
+    //    abstract public void Stop();
+    //}
+
+    //class Bus : Transport
+    //{
+    //    public override string ToString()
+    //    {
+    //        return base.ToString();
+    //    }
+    //    public override void Drive()
+    //    {
+    //        Console.WriteLine("i am moving....Bus");
+    //    }
+
+    //    public override void Stop()
+    //    {
+    //        Console.WriteLine("Stoped");
     //    }
     //}
-    class Point
-    {
-        private static int countObject;
-
-        public int Y { get; set; }
-        public int X { get; set; } //Делегируем создание скрытых полей компилятору
-        /*При созданий свойства:
-        1) Создаётся скрытое поле
-        2) Создаётся геттер, которые возвращает значение этого поля
-        3) Создаётся сеттер, который устанавливает значение для скрытого поля
-        */
-
-        //Свойства p.Y = 20
-        //public int Y
-        //{
-        //    get { return y; }
-        //    set
-        //    {
-        //        if (value > 0)
-        //            y = value;
-        //    }
-        //}
-
-        public Point()
-        {
-            countObject++;
-        }
-        public Point(int x, int y)
-        {
-            countObject++;
-            X = x;
-            Y = y;
-        }
-
-        static Point()
-        {
-            Point.countObject = 0;
-        }
-
-
-
-        //public void ShowPoint()
-        //{
-        //    Console.WriteLine($"X: {X}, Y: {this.y}");
-        //}
-
-        public override string ToString()
-        {
-            return $"X: {X}, Y: {Y}";
-        }
-
-        public static void GetCountObject()
-        {
-            Console.WriteLine(countObject);
-        }
-
-        public static Point operator+(Point obj, int a)
-        {
-            return new Point(obj.X + a, obj.Y + a);
-        }
-
-        public static Point operator +(int a, Point obj)
-        {
-            return new Point(obj.X + a, obj.Y + a);
-        }
-    }
-    abstract class Transport
-    {
-        //Класс называется абстрактным, если у него есть хотя бы 1 абстрактный метод
-        //Абстрактные методы должны быть обязательно реализованы в классах-наследниках
-        abstract public void Drive();
-        abstract public void Stop();
-    }
-
-    class Bus : Transport
-    {
-        public override string ToString()
-        {
-            return base.ToString();
-        }
-        public override void Drive()
-        {
-            Console.WriteLine("i am moving....Bus");
-        }
-
-        public override void Stop()
-        {
-            Console.WriteLine("Stoped");
-        }
-    }
     internal class Program
     { 
         
         static void Main(string[] args)
         {
+            int r, c;
+            Console.WriteLine("Enter rows: ");
+            r = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter cols: ");
+            c = Convert.ToInt32(Console.ReadLine());
+            MyArray2D arr = new MyArray2D(r,c);
 
-            Point p1 = new Point(10, 20);
-            Point p2 = p1 + 10 ;
-            Point p3 = 20 + p1;
-            Console.WriteLine(p2);
-           // if(p1>=100) Задача перегрузить оператор >=
+
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Rows; i++)
+            {
+                for (int j = 0; j < arr.Cols; j++)
+                {
+                    arr[i, j] = rnd.Next(10, 99);
+                    Console.Write(arr[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+
+            //MyArray arr = new MyArray(10);
+            //arr.Size = 30;
+            //Random rnd = new Random();
+
+            //for (int i = 0; i < arr.Size; i++)
+            //{
+            //    arr[i] = rnd.Next(-10, 20);
+            //    Console.WriteLine(arr[i]);
+            //}
+
+            // Point p1 = new Point(100, 200);
+            // Point p2 = p1 + 10 ;
+            // Point p3 = 20 + p1;
+            // Console.WriteLine(p2);
+            // Point p4= -p2;
+            // Console.WriteLine(p4);
+
+
+
+            //if(p1>=100)
+            // {
+            //     Console.WriteLine("OK");
+            // }
+            //else
+            // {
+            //     Console.WriteLine("Fail");
+            // }
+
+
+            //if(p1)
+            // {
+            //     Console.WriteLine("True");
+            // }
 
 
 
@@ -278,7 +367,7 @@ namespace SPU221_NET
             //Console.WriteLine(p2);
 
             //Point.GetCountObject();
-            
+
 
             //string str1 = "hello", str2 = "hello";
 
@@ -436,10 +525,10 @@ namespace SPU221_NET
         }
 
 
-        static void Move(Transport obj)
-        {
-            obj.Drive();
-        }
+        //static void Move(Transport obj)
+        //{
+        //    obj.Drive();
+        //}
         //параметры с out нужно обязательно инициализировать внутри функции
         public static void Up(out int n)
         {
